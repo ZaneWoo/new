@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />     
+    <link rel="stylesheet" href="css/iconfont.css" type="text/css" />
+    <link rel="stylesheet" href="css/iconfont1.css" type="text/css" />
+    <link rel="stylesheet" href="css/index.css" type="text/css" />
+    
+    <title>互联检测</title>
+    <style type="text/css">
+    		.mui-bar-nav ~ .mui-content{
+    			padding-top: 44px;
+    		}
+    		.mui-bar-tab ~ .mui-content{
+    			padding-bottom: 50px;
+    		}
+    		.icontext{
+    			color: #fff;
+    			display: block;
+    			text-align: center;
+    			line-height: 18px;
+    		}
+    </style>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <h1 class="mui-title">互联网网间通信质量监测系统</h1>
+	</header>
+	<nav class="mui-bar mui-bar-tab">
+		<li class="mui-tab-item" style="color: #26A0E6!important;background:#fff;">
+			<span class="mui-icon iconfont icon-home2"></span>
+			<span class="mui-tab-label" id="zhuye">主页</span>
+		</li>
+		<li class="mui-tab-item">
+			<span class="mui-icon iconfont icon-chart"></span>
+			<span class="mui-tab-label" id="baobiao">报表</span>
+		</li>
+		<li class="mui-tab-item">
+			<span class="mui-icon iconfont icon-file"></span>
+			<span class="mui-tab-label" id="renwu">任务</span>
+		</li>
+		<li class="mui-tab-item">
+			<span class="mui-icon iconfont icon-user3"></span>
+			<span class="mui-tab-label" id="geren">个人</span>
+		</li>
+	</nav>
+	<div class="mui-content">
+		<a id="zonghe">
+			<div class="zonghe">
+				<span class="mui-icon iconfont1 icon-shitu"></span>
+				<span class="icontext">综合视图</span>
+			</div>
+		</a>
+		<a id="quansheng">
+			<div class="quansheng">
+				<span class="mui-icon iconfont1 icon-shengfenshitu"></span>
+				<span class="icontext">全省视图</span>
+			</div>
+		</a>
+		<a id="qushi">
+			<div class="qushi">
+				<span class="mui-icon iconfont1 icon-qushishitu"></span>
+				<span class="icontext">趋势视图</span>
+			</div>
+		</a>
+		<a  id="chengshi">
+			<div class="chengshi">
+				<span class="mui-icon iconfont1 icon-chengshishitu"></span>
+				<span class="icontext">城市视图</span>
+			</div>
+		</a>
+		<a id="isp">
+			<div class="isp">
+				<span class="mui-icon iconfont1 icon-caozuoxitongshitu"></span>
+				<span class="icontext">ISP视图</span>
+			</div>
+		</a>
+		<a id="shijian">
+			<div class="shijian">
+				<span class="mui-icon iconfont1 icon-shebeishitu"></span>
+				<span class="icontext">时间分解</span>
+			</div>
+		</a>
+		<a id="wangjian">
+			<div class="wangjian">
+				<span class="mui-icon iconfont1 icon-shitufenxi"></span>
+				<span class="icontext">网间视图</span>
+			</div>
+		</a>  
+	</div>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript">
+		var first = null;
+			mui.back = function() {
+				if (showMenu) {
+					closeMenu();
+				} else {
+					//首次按键，提示‘再按一次退出应用’
+					if (!first) {
+						first = new Date().getTime();
+						mui.toast('再按一次退出应用');
+						setTimeout(function() {
+							first = null;
+						}, 1000);
+					} else {
+						if (new Date().getTime() - first < 1000) {
+							plus.runtime.quit();
+						}
+					}
+				}
+			};
+	</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+.mui-content{
+	margin:5% 5%;
+}
+
+.mui-bar{
+	background-color: #26A0E6!important;
+}
+a{
+	color: #fff;
+}
+li{
+	color: #fff!important;
+}
+h1{
+	color: #fff!important;
+}
+.zonghe{
+	width: 100%;
+	height: 100px;
+	background: #007AFF;
+}
+.quansheng,.qushi,.chengshi,.isp,.shijian,.wangjian{
+	width: 48%;
+	height: 100px;
+	margin-top: 10px;
+	float: left;
+}
+.qushi,.isp,.wangjian{
+	float: right;
+}
+.quansheng{
+	background: #368ff4 ;
+}
+.qushi{
+	background: #7479e8;
+}
+.chengshi{
+	background: #9455f3 ;
+}
+.isp{
+	background: #0fc4d9;
+}
+.shijian{
+	background: #ff6666;
+}
+.wangjian{
+	background: #ff8549 ;
+}

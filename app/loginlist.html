@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <link href="css/index.css" rel="stylesheet" />
+    <link href="css/login.css" rel="stylesheet" />
+    <script type="text/javascript">
+    mui.init();
+	  window.onload = function load(){
+			var getusername = localStorage.getItem("usernames");
+			var getpassword = localStorage.getItem("userpasswords");
+			if((("" != getusername)||(null != getusername))&&(("" != getpassword)||(null != getpassword)))
+			{
+				mui.ajax('http://gd2.ixp.link/users/login',{
+					data:{
+						name:getusername,
+						pwd:getpassword
+					},
+					dataType:'json',
+					type:'get',
+					success:function(data){
+						if(data.authenticate == true){
+							mui.openWindow({
+								url:'index.html',
+								top:'44px',
+							})
+						}
+					},
+				})
+			};
+		}
+    </script>
+    <style type="text/css">
+    		.mui-content{
+    			position: relative;
+    		}
+    		.mui-bar-nav ~ .mui-content{
+    			padding-top: 44px;
+    		}
+    		.mui-bar-tab ~ .mui-content{
+    			padding-bottom: 50px;
+    		}
+    		.icontext{
+    			color: #fff;
+    			display: block;
+    			text-align: center;
+    			line-height: 18px;
+    		}
+    		.appear{
+    			width: 300px;
+    			height: 50px;
+    			margin: 0 auto;
+    			position: absolute;
+			top: 50%;
+			margin-top: -80px;
+			left: 50%;
+			margin-left: -150px;
+    		}
+    		.appear-li{
+    			background:rgba(20,100,255,0.8);
+    			border-radius: 10px;
+    		}
+    		#goname{
+    			margin-top:20px;
+    		}
+    		#go{
+    			margin-left:123px;
+    		}
+    </style>
+</head>
+<body>
+	<div class="mui-content">
+		<div class="mui-content-padded" style="margin:10px;">
+			
+				<div class="Username">
+					<input type="text" id="username" placeholder="用户名" />
+				</div>
+				<div class="Password">
+					<input type="password" id="userpassword" placeholder="密码" />
+				</div>
+			<button id="forget">
+				<a href="#" >忘记密码</a>
+			</button>
+			<div style="margin-top:20px;text-align: center;">
+				<button class="mui-btn mui-btn-primary mui-btn-block" type="button" id="login">登录</button>
+			</div>
+		</div>
+		<div id="come" class="appear" style="display: none;">
+			<div class="appear-li">
+				<input id="goname" type="text" placeholder="请输入用户名" />
+				<p style="color: #FFF;">点击确认即可把该用户名密码发送到绑定的邮箱</p>
+				<button type="button" id="go">确定</button>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/login.js"></script>
+	<script type="text/javascript">
+		mui.plusReady(function(){
+			var forget = document.getElementById("forget");
+			var come = document.getElementById("come");
+			forget.addEventListener('tap',function(){
+				come.style.display="block";
+			})
+			var go = document.getElementById("go").addEventListener('tap',function(){
+				come.style.display="none";
+				var goname = document.getElementById("goname").value;
+				mui.ajax('http://gd2.ixp.link/users/forgetpwd',{
+					data:{
+						username:goname
+					},
+					dataType:'json',
+					type:'get',
+					success:function(data){
+						alert("发送成功");
+					},
+					error:function(type){
+						alert("服务器出错");
+					}
+				});
+				document.getElementById("goname").value = "";
+			})
+		})
+	</script>
+</body>
+</html>

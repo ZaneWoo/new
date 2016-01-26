@@ -1,0 +1,17 @@
+input{
+	border-radius: 10px!important;
+	display: inline;
+}
+.Username,.Password{
+	display: inline;
+}
+.mui-switch{
+	float: right;
+}
+.mui-content{
+    			margin-top: 80px;
+}
+a{
+	color: #26A0E6!important;
+}
+
